@@ -1,4 +1,5 @@
 Twetter::Application.routes.draw do
+  get "users/show"
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -8,6 +9,8 @@ Twetter::Application.routes.draw do
     resources :twets, :except => [:new, :edit, :show, :update]
     root :to => 'follows#index', :as => :user_root
   end
+
+  resources :users, :except => [:new, :create, :edit, :update, :destroy]
 
   # You can have the root of your site routed with "root"
   root :to => 'home#index'

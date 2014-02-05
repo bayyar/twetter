@@ -1,10 +1,10 @@
 <div class="col-md-4">
   <ul class="nav nav-pills nav-stacked well text-left">
     <li>
-      <%= content_tag :strong, current_user.name %>
+      <%= link_to current_user.name, user_path(current_user.id), :content_tag => :strong %>
     </li>
     <li>
-      <%= content_tag :small, '@'+current_user.username %>
+      <%= link_to '@'+current_user.username, user_path(current_user.id), :content_tag => :strong%>
     </li>
     <li>
       <table class="table table-bordered stats">

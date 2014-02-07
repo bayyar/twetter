@@ -1,3 +1,5 @@
+require 'digest/md5'
+
 module ApplicationHelper
   # Being the ApplicationHelper, all methods herein are available in all views.
 
@@ -17,6 +19,11 @@ module ApplicationHelper
         f.submit('Follow', :class => "btn btn-primary mar-top-5")
       end
     end
+  end
+
+  # Generates a gravatar hash
+  def gravatar(user)
+    "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(user.email.downcase)}"
   end
 
   # Generates a left navigation link setting the class according to the result of a

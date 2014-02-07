@@ -10,6 +10,9 @@ class TwetsController < ApplicationController
   #
   def index
     get_twets
+  def link_mentions(content)
+    content.gsub(/@?<username>(\w+)/,'<a href="'+'\k<username>'+'">@\k<username></a>').html_safe
+  end
   end
 
   # POST /twets
@@ -35,10 +38,6 @@ class TwetsController < ApplicationController
       flash[:error] = "Your twet could not be saved"
       render :action => :index and return
     end
-  end
-
-  def parse(content)
-    content.gsub(/@?<username>(\w+)/,'<a href="'+'\k<username>'+'">@\k<username></a>').html_safe
   end
 
   private

@@ -26,6 +26,12 @@ module ApplicationHelper
     "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(user.email.downcase)}"
   end
 
+  # Turns mentions in twet content into links to the user page. Not currently being used.
+
+  def mention_sub(content)
+    content.gsub(/@(?<username>(\w+))/,'<a href="'+'\k<username>'+'">@\k<username></a>').html_safe
+  end
+
   # Generates a left navigation link setting the class according to the result of a
   # call to the #active_class method.
   #

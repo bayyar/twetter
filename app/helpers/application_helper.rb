@@ -21,9 +21,10 @@ module ApplicationHelper
     end
   end
 
-  # Generates a gravatar hash
-  def gravatar(user)
-    "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(user.email.downcase)}"
+  # Generates a gravatar utl
+  def gravatar_url(user)
+    gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
+    "http://www.gravatar.com/avatar/#{gravatar_id}.png?s=48?d=mm"
   end
 
   # Turns mentions in twet content into links to the user page. Not currently being used.

@@ -1,13 +1,17 @@
 <div class="col-md-4">
   <ul class="nav nav-pills nav-stacked well text-left">
     <li>
-      <% image_tag(gravatar(current_user)) %>
-    </li> 
-    <li>
-      <%= link_to current_user.name, username_twets_path(current_user.username), :content_tag => :strong %>
-    </li>
-    <li>
-      <%= link_to '@'+current_user.username, username_twets_path(current_user.username), :content_tag => :strong%>
+      <table class="table no-border">
+        <tbody>
+          <tr>
+            <%= content_tag :td, image_tag(gravatar_url(current_user), :class => 'img-rounded'), :style => 'width: 60px;' %>
+            <td>
+              <%= content_tag :strong, current_user.name %><br />
+              <%= content_tag :small, "@"+current_user.username, :class => 'text-muted' %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </li>
     <li>
       <table class="table table-bordered stats">
